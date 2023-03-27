@@ -10,14 +10,17 @@ const apiInstance = axios.create({
     baseURL: BASE_URL,
     params: {key: API_KEY}
 })
-const createReguest = (endpoint: ApiEndpoint | string, params?: any):Promise<any> => {
-    return apiInstance.get(endpoint, {params: {...params}})
+const createReguest = (endpoint: ApiEndpoint | string, params?: any, limit?: number, offset?: number) => {
+    if (limit && limit > 40)
+        limit = 40
+
+    return apiInstance.get(endpoint, {params: {...params, startIndex: offset ?? 0, maxResults: limit ?? 40}, }).then(data => data.data)
 }
 
 export const api:IApi = {
-    search(query, orderBy, category) {
+    search(query, orderBy, category, limit, offset) {
         if (category) query += category
-        return createReguest(ApiEndpoint.search,{q: query,orderBy}).then(data => data.data)
+        return createReguest(ApiEndpoint.search,{q: query,orderBy},limit, offset)
     },
 
     getBookInfo(id) {

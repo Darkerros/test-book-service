@@ -1,0 +1,26 @@
+import axios from "axios";
+import {ApiEndpoint} from "../types/api-endpoint";
+import {IApi} from "../types/api-interface";
+
+
+const BASE_URL = "https://www.googleapis.com/books/v1/"
+const API_KEY = "AIzaSyBGn7fYXzOyFpi2iY0l7KSq_g6WbjTKgU8"
+
+const apiInstance = axios.create({
+    baseURL: BASE_URL,
+    params: {key: API_KEY}
+})
+const createReguest = (endpoint: ApiEndpoint | string, params?: any):Promise<any> => {
+    return apiInstance.get(endpoint, {params: {...params}})
+}
+
+export const api:IApi = {
+    search(query, orderBy, category) {
+        if (category) query += category
+        return createReguest(ApiEndpoint.search,{q: query,orderBy}).then(data => data.data)
+    },
+
+    getBookInfo(id) {
+        return createReguest(`${ApiEndpoint.getById}/${id}`, {projection: "full"})
+    }
+}

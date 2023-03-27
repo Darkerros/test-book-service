@@ -1,8 +1,9 @@
-import {configureStore} from "@reduxjs/toolkit";
+import {combineReducers, configureStore} from "@reduxjs/toolkit";
+import {searchReducer} from "./reducers/search-reducer";
 
 
 export const store = configureStore({
-    reducer: [],
+    reducer: combineReducers({searchReducer}),
     devTools: true,
 })
 

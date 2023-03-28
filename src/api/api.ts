@@ -20,7 +20,7 @@ const createReguest = (endpoint: ApiEndpoint | string, params?: any, limit?: num
 
 export const api:IApi = {
     search(query, orderBy, category, limit, offset) {
-        if (category && category !== BookCategory.all) query += category
+        if (category && category !== BookCategory.all) query += `subject:${category}`
         return createReguest(ApiEndpoint.search,{q: query,orderBy},limit, offset)
     },
 

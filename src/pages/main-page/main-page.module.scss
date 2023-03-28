@@ -1,0 +1,38 @@
+.mainPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  padding: 0 0 150px;
+
+  min-height: 300px;
+
+
+  &__foundCount {
+    margin: 20px 0 50px;
+
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  &__loadMoreBtn {
+    margin-top: 50px;
+  }
+
+  &__loader {
+    width: 100px;
+    height: 100px;
+
+    animation: Spin 2s linear infinite;
+  }
+}
+
+@keyframes Spin {
+  from {
+    transform: rotate(0);
+  }
+  to  {
+    transform: rotate(360deg);
+  }
+}

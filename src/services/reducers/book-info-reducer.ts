@@ -43,7 +43,7 @@ const bookInfoReducerSlice = createSlice({
             state.isSuccess = true
             state.bookInfo = action.payload
         })
-        builder.addCase(getBookInfoByIdThunk.pending, (state) => {
+        builder.addCase(getBookInfoByIdThunk.rejected, (state) => {
             state.isLoading = false
             state.isError = true
         })

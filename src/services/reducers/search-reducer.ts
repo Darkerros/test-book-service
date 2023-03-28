@@ -89,6 +89,8 @@ const searchReducerSlice = createSlice({
                 return state
             }
 
+            state.total = action.payload.totalItems
+
             state.isHaveNextPage = true
             state.currentItemsOffset += state.requestItemsLimit
             state.items = action.payload.items
@@ -113,10 +115,12 @@ const searchReducerSlice = createSlice({
                 return state
             }
 
+            state.total = action.payload.totalItems
+
             state.isHaveNextPage = true
             state.currentItemsOffset += state.requestItemsLimit
 
-            const filteredSearchItems = action.payload.items.filter(bookInfo => !state.itemsIncludeObject[bookInfo.volumeInfo.title])
+            const filteredSearchItems = action.payload.items.filter(bookInfo => !state.itemsIncludeObject[bookInfo.id])
             const itemsIncludeObjectToAdd = filteredSearchItems.reduce((acc:IInitialState["itemsIncludeObject"],bookInfo) => ({...acc, [bookInfo.id]: true}),{})
             state.items = [...state.items, ...filteredSearchItems]
             state.itemsIncludeObject = {...state.itemsIncludeObject, ...itemsIncludeObjectToAdd}

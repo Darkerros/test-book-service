@@ -11,13 +11,27 @@
 
     margin: 0 auto;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     &Poster {
-      width: 100%;
       height: 100%;
 
       object-fit: contain;
 
       box-shadow: 4px 10px 10px 0 rgba(0, 0, 0, 0.5);
+
+      transition: .3s linear all;
+
+      &:hover {
+        transform: scale(1.5);
+      }
+    }
+
+    &NoPosterIcon {
+      width: 70px;
+      height: 70px;
     }
   }
 

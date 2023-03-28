@@ -1,0 +1,42 @@
+.loadMoreBtn {
+  padding: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  font-size: 20px;
+  font-weight: 700;
+
+  width: 280px;
+
+  border: none;
+  border-radius: 5px;
+  background: aliceblue;
+
+  cursor: pointer;
+
+  transition: .1s linear all;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+
+  &__loadIcon {
+    animation: linear infinite Spin 2s;
+  }
+}
+
+@keyframes Spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -48,6 +48,7 @@
 
   &__name {
     margin: 15px 0 0;
+    color: black;
 
     min-height: 55px;
 
@@ -74,5 +75,17 @@
     text-overflow: ellipsis;
 
     opacity: 0.4;
+  }
+
+  &__link {
+    cursor: pointer;
+
+    transition: .3s linear all;
+
+    text-decoration: none;
+
+    &:hover {
+      opacity: 0.6;
+    }
   }
 }

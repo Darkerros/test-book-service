@@ -1,0 +1,26 @@
+.bookInfoContainer {
+  padding: 100px 30px 25px;
+  max-width: 50%;
+
+  background: aliceblue;
+  border-radius: 5px;
+
+  &__categories {
+    margin: 0;
+
+    font-size: 18px;
+    color: rgb(103, 103, 103);
+
+    text-align: start;
+  }
+
+  &__title {
+    margin: 15px 0 0;
+  }
+
+  &__authors {
+    text-decoration: underline;
+
+    color: rgb(103, 103, 103);
+  }
+}

@@ -29,10 +29,10 @@ export const FilterBlock:FC<IFilterBlockProps> = ({extraClass}) => {
 
     return (
         <div className={extraClass ? `${styles.filtersContainer} ${extraClass}` : `${styles.filtersContainer}`}>
-            <select name="" id="" className={styles.filtersContainer__select}  onChange={handleChangeCategory}>
+            <select name="category" className={styles.filtersContainer__select}  onChange={handleChangeCategory}>
                 {categoryOptions.map(option => <option value={option.value}>{option.label}</option>)}
             </select>
-            <select name="" id="" className={styles.filtersContainer__select} onChange={handleChangeOrderBy}>
+            <select name="orderBy" className={styles.filtersContainer__select} onChange={handleChangeOrderBy}>
                 {orderByOptions.map(option => <option value={option.value}>{option.label}</option>)}
             </select>
         </div>

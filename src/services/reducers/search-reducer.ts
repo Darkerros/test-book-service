@@ -16,6 +16,8 @@ interface IInitialState {
     items: BookVolumeResource[];
     total: number | null;
 
+    requestItemsLimit: number;
+
     isLoadingSearch: boolean;
     isSuccessSearch: boolean;
     isErrorSearch: boolean;
@@ -34,6 +36,7 @@ const initialState:IInitialState = {
 
     itemsIncludeObject: {},
     currentItemsOffset: 0,
+    requestItemsLimit: 30,
     items: [],
     total: null,
 
@@ -80,15 +83,16 @@ const searchReducerSlice = createSlice({
             state.isLoadingSearch = false
             state.isSuccessSearch = true
 
-            if (!action.payload.items) {
+            if (!action.payload.items ) {
                 state.total = 0
                 state.isHaveNextPage = false
                 return state
             }
 
             state.isHaveNextPage = true
+            state.currentItemsOffset += state.requestItemsLimit
             state.items = action.payload.items
-            state.itemsIncludeObject = action.payload.items.reduce((acc:IInitialState["itemsIncludeObject"],bookInfo) => ({...acc, [bookInfo.volumeInfo.title]: true}),{})
+            state.itemsIncludeObject = action.payload.items.reduce((acc:IInitialState["itemsIncludeObject"],bookInfo) => ({...acc, [bookInfo.id]: true}),{})
         })
         builder.addCase(searchBookThunk.rejected,(state) => {
             state.isErrorSearch = true
@@ -110,9 +114,10 @@ const searchReducerSlice = createSlice({
             }
 
             state.isHaveNextPage = true
+            state.currentItemsOffset += state.requestItemsLimit
 
-            const filteredSearchItems = action.payload.items.filter(bookInfo => state.itemsIncludeObject[bookInfo.volumeInfo.title])
-            const itemsIncludeObjectToAdd = filteredSearchItems.reduce((acc:IInitialState["itemsIncludeObject"],bookInfo) => ({...acc, [bookInfo.volumeInfo.title]: true}),{})
+            const filteredSearchItems = action.payload.items.filter(bookInfo => !state.itemsIncludeObject[bookInfo.volumeInfo.title])
+            const itemsIncludeObjectToAdd = filteredSearchItems.reduce((acc:IInitialState["itemsIncludeObject"],bookInfo) => ({...acc, [bookInfo.id]: true}),{})
             state.items = [...state.items, ...filteredSearchItems]
             state.itemsIncludeObject = {...state.itemsIncludeObject, ...itemsIncludeObjectToAdd}
         })

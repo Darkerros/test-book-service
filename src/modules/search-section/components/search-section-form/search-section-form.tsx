@@ -11,8 +11,7 @@ interface ISearchSectionFormProps {
 export const SearchSectionForm:FC<ISearchSectionFormProps> = ({submitHandler}) => {
     const onSubmit = useCallback((event: FormEvent) => {
         submitHandler(event)
-        // eslint-disable-next-line
-    },[])
+    },[submitHandler])
 
     return (
         <form className={styles.searchSectionForm} onSubmit={onSubmit}>

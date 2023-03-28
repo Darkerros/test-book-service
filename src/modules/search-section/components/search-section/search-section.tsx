@@ -3,12 +3,17 @@ import styles from './search-section.module.scss'
 import {SearchSectionForm} from "../search-section-form/search-section-form";
 import {useAppDispatch} from "../../../../hooks/use-app-dispatch";
 import {searchBookThunk} from "../../../../services/thunks/search-book-thunk";
+import {useLocation, useNavigate} from "react-router-dom";
 
 export const SearchSection = () => {
+    const location = useLocation()
+    const navigation = useNavigate()
     const dispatch = useAppDispatch()
 
     const onSubmit = useCallback((event: FormEvent) => {
         event.preventDefault()
+        if (location.pathname !== "/") navigation(-1)
+
         dispatch(searchBookThunk())
         // eslint-disable-next-line
     },[])

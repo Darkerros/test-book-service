@@ -1,6 +1,9 @@
 .searchSection {
   position: relative;
-  width: 1920px;
+  width: 100%;
+
+  box-sizing: border-box;
+
   padding: 70px;
 
   display: flex;
@@ -28,9 +31,5 @@
     color: white;
     font-size: 40px;
     font-weight: 700;
-  }
-
-  &__form {
-
   }
 }

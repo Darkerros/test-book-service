@@ -1,5 +1,5 @@
 export enum BookCategory {
-    all = "",
+    all = "all",
     art = "art",
     biography = "biography",
     computers = "computers",

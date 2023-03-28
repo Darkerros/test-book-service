@@ -19,11 +19,11 @@ const createReguest = (endpoint: ApiEndpoint | string, params?: any, limit?: num
 
 export const api:IApi = {
     search(query, orderBy, category, limit, offset) {
-        query += `subject:${category}`
+        query += `+subject:${category}`
         return createReguest(ApiEndpoint.search,{q: query,orderBy},limit, offset)
     },
 
     getBookInfo(id) {
-        return createReguest(`${ApiEndpoint.getById}/${id}`, {projection: "full"})
+        return createReguest(`${ApiEndpoint.getById}/${id}`)
     }
 }

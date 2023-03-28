@@ -1,7 +1,7 @@
 import {Route, Routes} from "react-router-dom";
 import {Layout} from "../../../../components/layout/layout";
 import {MainPage} from "../../../../pages/main-page/main-page";
-import {BookPage} from "../../../../pages/book-page/book=page";
+import {BookPage} from "../../../../pages/book-page/book-page";
 
 
 export const App = () => {

@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FC} from 'react';
+import React, {ChangeEvent, FC, useCallback} from 'react';
 import styles from './filter-block.module.scss'
 import {BookCategory} from "../../../../types/book-category";
 import {OrderBy} from "../../../../types/order-by";
@@ -18,14 +18,16 @@ export const FilterBlock:FC<IFilterBlockProps> = ({extraClass}) => {
     const dispatch = useAppDispatch()
 
 
-    const handleChangeCategory = (event:ChangeEvent<HTMLSelectElement>) => {
+    const handleChangeCategory = useCallback((event:ChangeEvent<HTMLSelectElement>) => {
         const category = getBookCategoryByValue(event.target.value)
         dispatch(searchReducerActions.changeCategoryFilter(category))
-    }
-    const handleChangeOrderBy = (event:ChangeEvent<HTMLSelectElement>) => {
+        // eslint-disable-next-line
+    },[])
+    const handleChangeOrderBy = useCallback((event:ChangeEvent<HTMLSelectElement>) => {
         const orderBy = getOrderByByValue(event.target.value)
         dispatch(searchReducerActions.changeOrderFilter(orderBy))
-    }
+        // eslint-disable-next-line
+    },[])
 
     return (
         <div className={extraClass ? `${styles.filtersContainer} ${extraClass}` : `${styles.filtersContainer}`}>

@@ -5,7 +5,8 @@ import {LoadMoreButton} from "../../components/load-more-button/load-more-button
 import {useCallback} from "react";
 import {useAppDispatch} from "../../hooks/use-app-dispatch";
 import {getNextSearchPageThunk} from "../../services/thunks/get-next-search-page-thunk";
-import {LoadIcon} from "../../ui/icons/load-icon";
+import {Loader} from "../../ui/loader/loader";
+
 export const MainPage = () => {
     const dispatch = useAppDispatch()
     const {isLoadingNextPage, isLoadingSearch, isSuccessSearch, items: books, total, isHaveNextPage} = useAppSelector(state => state.searchReducer)
@@ -18,7 +19,7 @@ export const MainPage = () => {
     return (
         <section className={styles.mainPage}>
             {isSuccessSearch && <p className={styles.mainPage__foundCount}>Found books: {total}</p>}
-            {isLoadingSearch && <LoadIcon className={styles.mainPage__loader}/>}
+            {isLoadingSearch && <Loader extraClass={styles.mainPage__loader}/>}
             <BookCardList books={books}/>
             {isHaveNextPage && <LoadMoreButton isLoading={isLoadingNextPage} extraClass={styles.mainPage__loadMoreBtn} onClick={handleNextSearchPage}/>}
         </section>

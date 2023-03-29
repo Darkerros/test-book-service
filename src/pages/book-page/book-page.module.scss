@@ -33,7 +33,13 @@
     }
   }
 
-  &__infoContainer {
+  &__loader {
+    width: 100px;
+    height: 100px;
+    padding: 50px;
+  }
 
+  &__error {
+    color: red;
   }
 }

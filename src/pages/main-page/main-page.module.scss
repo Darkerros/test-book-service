@@ -29,16 +29,5 @@
   &__loader {
     width: 100px;
     height: 100px;
-
-    animation: Spin 2s linear infinite;
-  }
-}
-
-@keyframes Spin {
-  from {
-    transform: rotate(0);
-  }
-  to  {
-    transform: rotate(360deg);
   }
 }

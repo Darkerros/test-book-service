@@ -6,10 +6,11 @@ import {useAppDispatch} from "../../hooks/use-app-dispatch";
 import {getBookInfoByIdThunk} from "../../services/thunks/getBookInfoByIdThunk";
 import {useAppSelector} from "../../hooks/use-app-selector";
 import {BookInfoBlock} from "../../modules/book-info-block";
+import {Loader} from "../../ui/loader/loader";
 export const BookPage = () => {
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
-    const bookInfo = useAppSelector(state => state.bookInfoReducer.bookInfo)
+    const {isLoading, isError, bookInfo} = useAppSelector(state => state.bookInfoReducer)
     const {id} = useParams<{id: string}>()
 
     useEffect(() => {
@@ -27,6 +28,8 @@ export const BookPage = () => {
                 <PrevArrowIcon/>
                 BACK TO SEARCH
             </button>
+            {isLoading && <Loader extraClass={styles.bookPage__loader}/>}
+            {isError && <p className={styles.bookPage__error}>Sorry book info dont load</p>}
             {bookInfo && <BookInfoBlock bookInfo={bookInfo}/>}
         </section>
     );

@@ -21,7 +21,6 @@ export const BookInfoBlock:FC<IBookInfoBlockProps> = ({bookInfo}) => {
                     <BookIcon className={styles.bookInfoBlock__imageContainerNotImageIcon}/>
                 }
             </div>
-
             <BookInfoContainer bookinfo={bookInfo}/>
         </div>
     );

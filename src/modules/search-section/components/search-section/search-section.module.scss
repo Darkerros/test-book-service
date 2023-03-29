@@ -31,5 +31,12 @@
     color: white;
     font-size: 40px;
     font-weight: 700;
+
+    @media screen and (max-width: 425px) {
+      & {
+        font-size: 28px;
+      }
+    }
   }
 }
+

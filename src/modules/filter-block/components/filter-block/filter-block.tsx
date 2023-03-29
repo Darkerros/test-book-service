@@ -6,6 +6,7 @@ import {useAppDispatch} from "../../../../hooks/use-app-dispatch";
 import {searchReducerActions} from "../../../../services/reducers/search-reducer";
 import {getBookCategoryByValue} from "../helpers/get-book-category-by-value";
 import {getOrderByByValue} from "../helpers/get-order-by-by-value";
+import {Select} from "../../../../ui/select/select";
 
 const categoryOptions = Object.keys(BookCategory).map((category) => ({value: category, label: category}))
 const orderByOptions = Object.values(OrderBy).map((orderBy) => ({value: orderBy, label: orderBy}))
@@ -16,7 +17,6 @@ interface IFilterBlockProps {
 
 export const FilterBlock:FC<IFilterBlockProps> = ({extraClass}) => {
     const dispatch = useAppDispatch()
-
 
     const handleChangeCategory = useCallback((event:ChangeEvent<HTMLSelectElement>) => {
         const category = getBookCategoryByValue(event.target.value)
@@ -31,12 +31,8 @@ export const FilterBlock:FC<IFilterBlockProps> = ({extraClass}) => {
 
     return (
         <div className={extraClass ? `${styles.filtersContainer} ${extraClass}` : `${styles.filtersContainer}`}>
-            <select name="category" className={styles.filtersContainer__select}  onChange={handleChangeCategory}>
-                {categoryOptions.map(option => <option value={option.value}>{option.label}</option>)}
-            </select>
-            <select name="orderBy" className={styles.filtersContainer__select} onChange={handleChangeOrderBy}>
-                {orderByOptions.map(option => <option value={option.value}>{option.label}</option>)}
-            </select>
+            <Select onChange={handleChangeCategory} name="category" options={categoryOptions} title="Categories"/>
+            <Select onChange={handleChangeOrderBy} name="orderBy" options={orderByOptions} title="Order by"/>
         </div>
     );
 };

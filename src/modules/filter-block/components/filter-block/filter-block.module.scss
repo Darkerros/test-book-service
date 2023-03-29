@@ -4,6 +4,22 @@
   justify-content: center;
   gap: 25px;
 
+  &__selectContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    color: white;
+    font-size: 18px;
+
+    gap: 10px;
+    
+    @media screen and (max-width: 950px) {
+      align-items: start;
+      flex-direction: column;
+    }
+  }
+
   &__select {
     min-width: 300px;
     min-height: 40px;

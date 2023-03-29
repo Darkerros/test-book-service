@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import styles from './book-info-block.module.scss'
 import {BookVolumeResource} from "../../../../types/resources/book-volume-resource";
 import {BookInfoContainer} from "../book-info-container/book-info-container";
-import {BookIcon} from "../../../../ui/icons/book-icon";
+import {FakeBookPoster} from "../../../../components/fake-book-poster/fake-book-poster";
 
 interface IBookInfoBlockProps {
     bookInfo: BookVolumeResource;
@@ -18,7 +18,7 @@ export const BookInfoBlock:FC<IBookInfoBlockProps> = ({bookInfo}) => {
                     ?
                     <img className={styles.bookInfoBlock__imageContainerImage} src={bookInfo.volumeInfo.imageLinks.medium} alt="Картинка к книги"/>
                     :
-                    <BookIcon className={styles.bookInfoBlock__imageContainerNotImageIcon}/>
+                    <FakeBookPoster title={bookInfo.volumeInfo.title}/>
                 }
             </div>
             <BookInfoContainer bookinfo={bookInfo}/>

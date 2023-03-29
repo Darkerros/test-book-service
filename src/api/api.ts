@@ -1,6 +1,7 @@
 import axios from "axios";
 import {ApiEndpoint} from "../types/api-endpoint";
 import {IApi} from "../types/api-interface";
+import {BookCategory} from "../types/book-category";
 
 
 const BASE_URL = "https://www.googleapis.com/books/v1/"
@@ -19,7 +20,7 @@ const createReguest = (endpoint: ApiEndpoint | string, params?: any, limit?: num
 
 export const api:IApi = {
     search(query, orderBy, category, limit, offset) {
-        query += `+subject:${category}`
+        if (category !== BookCategory.all) query += `+subject:${category}`
         return createReguest(ApiEndpoint.search,{q: query,orderBy},limit, offset)
     },
 

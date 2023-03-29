@@ -9,7 +9,7 @@ import {Loader} from "../../ui/loader/loader";
 
 export const MainPage = () => {
     const dispatch = useAppDispatch()
-    const {isLoadingNextPage, isLoadingSearch, isSuccessSearch, items: books, total, isHaveNextPage} = useAppSelector(state => state.searchReducer)
+    const {isLoadingNextPage,isLoadingSearch, isSuccessSearch, items: books, total, isHaveNextPage} = useAppSelector(state => state.searchReducer)
 
     const handleNextSearchPage = useCallback(() => {
         dispatch(getNextSearchPageThunk())
@@ -20,6 +20,7 @@ export const MainPage = () => {
         <section className={styles.mainPage}>
             {isSuccessSearch && <p className={styles.mainPage__foundCount}>Found books: {total}</p>}
             {isLoadingSearch && <Loader extraClass={styles.mainPage__loader}/>}
+            {!books.length && !isLoadingSearch && <p className={styles.mainPage__startFindMessage}>Hi, Start find book</p>}
             <BookCardList books={books}/>
             {isHaveNextPage && <LoadMoreButton isLoading={isLoadingNextPage} extraClass={styles.mainPage__loadMoreBtn} onClick={handleNextSearchPage}/>}
         </section>

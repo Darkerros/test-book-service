@@ -1,0 +1,31 @@
+.selectContainer {
+  gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  @media screen and (max-width: 950px) {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  &__label {
+    color: white;
+    font-size: 18px;
+  }
+
+  &__select {
+    min-width: 300px;
+    min-height: 40px;
+
+    padding: 5px 10px;
+    font-size: 18px;
+
+    border-radius: 5px;
+    border: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

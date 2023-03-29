@@ -1,7 +1,7 @@
 import {FC, FormEvent, useCallback} from 'react';
 import styles from "./search-section-from.module.scss"
-import {FilterBlock} from "../../../filter-block";
 import {SearchSectionInput} from "../search-section-input/search-section-input";
+import {FilterBlock} from "../search-filters-block/filter-block";
 
 
 interface ISearchSectionFormProps {

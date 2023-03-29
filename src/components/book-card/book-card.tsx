@@ -12,7 +12,6 @@ export const BookCard:FC<IBookCardProps> = memo(({bookInfo}) => {
     const isCategoriesNotNull = bookInfo.volumeInfo.categories && bookInfo.volumeInfo.categories.length
     const isAuthorsNotNull = bookInfo.volumeInfo.authors && bookInfo.volumeInfo.authors.length
     const isThumbnailsNull = !bookInfo.volumeInfo.imageLinks?.thumbnail
-    console.log(bookInfo.volumeInfo.imageLinks)
 
     return (
         <div className={styles.bookCard}>

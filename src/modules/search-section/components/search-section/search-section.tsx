@@ -12,7 +12,6 @@ export const SearchSection = () => {
 
     const onSubmit = useCallback((event: FormEvent) => {
         event.preventDefault()
-        console.log(location)
         if (location.pathname !== "/") navigation(-1)
 
         dispatch(searchBookThunk())
